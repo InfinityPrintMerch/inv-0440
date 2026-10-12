@@ -1,0 +1,902 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#671e32">
+    <meta name="description" content="Acompaña a David y Nelly a celebrar su boda en Tlaxcala.">
+    <title>David & Nelly · Nuestra boda</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&family=Montserrat:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --wine: #671e32;
+            --ink: #352b2a;
+            --paper: #faf7f1;
+            --gold: #a18a60
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            line-height: 1.9
+        }
+
+        button,
+        a,
+        input,
+        select {
+            -webkit-tap-highlight-color: transparent
+        }
+
+        button,
+        a {
+            touch-action: manipulation
+        }
+
+        button {
+            cursor: pointer
+        }
+
+        a {
+            color: inherit
+        }
+
+        button,
+        input,
+        select {
+            font: inherit
+        }
+
+        button:focus-visible,
+        a:focus-visible {
+            outline: 3px solid var(--gold);
+            outline-offset: 5px
+        }
+
+        .serif,
+        h2,
+        h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 400
+        }
+
+        .script {
+            font-family: 'Great Vibes', cursive;
+            font-weight: 400
+        }
+
+        .eyebrow {
+            font-size: 10px;
+            letter-spacing: .28em;
+            text-transform: uppercase
+        }
+
+        .line {
+            width: 45px;
+            height: 1px;
+            background: var(--gold);
+            margin: 28px auto
+        }
+
+        nav {
+            height: 76px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6%;
+            border-bottom: 1px solid #ded4c6
+        }
+
+        nav .monogram {
+            font-family: 'Cormorant Garamond';
+            font-size: 29px;
+            color: var(--wine)
+        }
+
+        nav .links {
+            display: flex;
+            gap: 35px
+        }
+
+        nav a {
+            text-decoration: none;
+            font-size: 10px;
+            letter-spacing: .15em;
+            text-transform: uppercase
+        }
+
+        .hero {
+            position: relative;
+            min-height: 720px;
+            height: calc(100svh - 76px);
+            max-height: 1050px;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            color: white;
+            background: #34382f;
+            isolation: isolate;
+            overflow: hidden
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, #1721198a, #211c2238, #231e228c);
+            z-index: -1
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2
+        }
+
+        .hero-inner {
+            padding: 65px 20px
+        }
+
+        .hero h1 {
+            font-size: clamp(76px, 10vw, 150px);
+            line-height: 1.25;
+            margin: 35px 0 18px;
+            text-shadow: 0 2px 35px #0004
+        }
+
+        .hero .date {
+            font-size: 13px;
+            letter-spacing: .24em
+        }
+
+        .hero .place {
+            font-size: 11px;
+            letter-spacing: .24em;
+            margin-top: 24px
+        }
+
+        .outline {
+            display: inline-block;
+            border: 1px solid currentColor;
+            background: transparent;
+            color: inherit;
+            padding: 12px 27px;
+            text-decoration: none;
+            font-size: 10px;
+            letter-spacing: .17em;
+            text-transform: uppercase
+        }
+
+        .hero .outline {
+            margin-top: 30px
+        }
+
+        .scroll {
+            position: absolute;
+            bottom: 23px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 10px;
+            letter-spacing: .2em
+        }
+
+        .section {
+            padding: 105px 24px;
+            text-align: center;
+            max-width: 1200px;
+            margin: auto
+        }
+
+        h2 {
+            font-size: clamp(39px, 5vw, 58px);
+            line-height: 1.15;
+            margin: 17px 0 26px
+        }
+
+        h3 {
+            font-size: 31px;
+            line-height: 1.25;
+            margin: 15px 0
+        }
+
+        .intro {
+            max-width: 690px;
+            margin: auto;
+            font-size: 14px;
+            color: #766b64
+        }
+
+        .quote {
+            font-size: 32px;
+            line-height: 1.5;
+            max-width: 750px;
+            margin: 0 auto 28px
+        }
+
+        .flower {
+            color: var(--gold);
+            font-size: 32px;
+            line-height: 1
+        }
+
+        .count-section {
+            background: #eee9df
+        }
+
+        .counter {
+            display: flex;
+            justify-content: center;
+            gap: 45px;
+            margin: 35px 0 24px
+        }
+
+        .unit {
+            min-width: 83px
+        }
+
+        .unit b {
+            font-family: 'Cormorant Garamond';
+            font-weight: 400;
+            font-size: 65px;
+            line-height: 1.1;
+            color: var(--wine);
+            display: block
+        }
+
+        .unit span {
+            font-size: 9px;
+            letter-spacing: .18em;
+            text-transform: uppercase
+        }
+
+        .small {
+            font-size: 11px;
+            color: #82756d
+        }
+
+        .families {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 45px;
+            margin: 45px auto;
+            max-width: 830px
+        }
+
+        .names {
+            font-family: 'Cormorant Garamond';
+            font-size: 24px;
+            line-height: 1.5
+        }
+
+        .families .eyebrow {
+            color: var(--gold)
+        }
+
+        .godmother {
+            border-top: 1px solid #ddd2c2;
+            padding-top: 32px;
+            max-width: 500px;
+            margin: auto
+        }
+
+        .locations {
+            background: var(--wine);
+            color: var(--paper)
+        }
+
+        .locations .section {
+            max-width: 1100px
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            margin-top: 52px
+        }
+
+        .location {
+            display: flex;
+            flex-direction: column;
+            align-items: center
+        }
+
+        .location p {
+            max-width: 370px;
+            font-size: 13px;
+            color: #ead8dc
+        }
+
+        .location .outline {
+            margin-top: auto
+        }
+
+        .icon {
+            width: 49px;
+            height: 49px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.1;
+            color: #c4ad8a
+        }
+
+        .dress {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 70px;
+            text-align: left
+        }
+
+        .dress-art {
+            border: 1px solid #d7cbbb;
+            padding: 60px 25px;
+            text-align: center;
+            position: relative
+        }
+
+        .dress-art:after {
+            content: '';
+            position: absolute;
+            inset: 9px;
+            border: 1px solid #e4dacb;
+            pointer-events: none
+        }
+
+        .dress-art svg {
+            width: 160px;
+            height: 180px;
+            fill: none;
+            stroke: var(--wine);
+            stroke-width: 1.2
+        }
+
+        .dress .line {
+            margin-left: 0
+        }
+
+        .gallery-section {
+            padding-top: 40px
+        }
+
+        .gallery {
+            position: relative;
+            margin-top: 45px
+        }
+
+        .track {
+            display: flex;
+            gap: 18px;
+            overflow: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            padding: 5px 0 15px
+        }
+
+        .track::-webkit-scrollbar {
+            display: none
+        }
+
+        .slide {
+            flex: 0 0 42%;
+            scroll-snap-align: center;
+            position: relative;
+            height: 430px;
+            background: #e9e1d5;
+            overflow: hidden
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover
+        }
+
+        .slide span {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            background: #faf7f1e8;
+            padding: 5px 12px;
+            font-size: 9px;
+            letter-spacing: .1em
+        }
+
+        .gallery-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 15px
+        }
+
+        .round {
+            border: 1px solid #cabbab;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            background: none;
+            color: var(--wine);
+            font-size: 20px
+        }
+
+        .video-wrap {
+            background: #eae4da;
+            padding: 85px 24px;
+            text-align: center
+        }
+
+        .video-shell {
+            max-width: 900px;
+            margin: 40px auto 0;
+            aspect-ratio: 16/9;
+            background: #383831;
+            display: grid;
+            place-items: center;
+            position: relative;
+            color: var(--paper);
+            overflow: hidden
+        }
+
+        .video-shell video {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            inset: 0;
+            object-fit: contain
+        }
+
+        .video-placeholder {
+            padding: 25px
+        }
+
+        .video-placeholder .serif {
+            font-size: 28px
+        }
+
+        .video-placeholder .small {
+            color: #c8c0b3
+        }
+
+        footer {
+            text-align: center;
+            padding: 65px 20px 100px
+        }
+
+        footer .script {
+            font-size: 57px;
+            color: var(--wine)
+        }
+
+        footer p {
+            font-size: 10px;
+            letter-spacing: .2em
+        }
+
+        .music {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 30;
+            border: 1px solid #bcab90;
+            background: var(--paper);
+            color: var(--wine);
+            border-radius: 40px;
+            min-height: 52px;
+            padding: 0 20px;
+            box-shadow: 0 4px 22px #352b2a20;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 11px
+        }
+
+        .bars {
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            height: 20px
+        }
+
+        .bars i {
+            display: block;
+            background: var(--wine);
+            width: 2px;
+            height: 7px
+        }
+
+        .music[data-playing=true] i {
+            animation: bar .9s ease-in-out infinite alternate
+        }
+
+        .music i:nth-child(2) {
+            height: 16px;
+            animation-delay: .2s
+        }
+
+        .music i:nth-child(3) {
+            height: 11px;
+            animation-delay: .4s
+        }
+
+        @keyframes bar {
+            to {
+                height: 20px
+            }
+        }
+
+        .entry {
+            position: fixed;
+            inset: 0;
+            background: var(--paper);
+            z-index: 100;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            padding: 25px;
+            transition: opacity .6s
+        }
+
+        .entry.hidden {
+            opacity: 0;
+            pointer-events: none
+        }
+
+        .entry-box {
+            border: 1px solid #bba887;
+            outline: 1px solid #dfd3bf;
+            outline-offset: 9px;
+            padding: 65px 50px;
+            max-width: 530px;
+            width: 100%
+        }
+
+        .entry .script {
+            color: var(--wine);
+            font-size: 65px;
+            line-height: 1.3;
+            margin: 27px 0
+        }
+
+        .solid {
+            background: var(--wine);
+            color: white;
+            border: 0;
+            padding: 16px 26px;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            font-size: 10px
+        }
+
+        .entry .small {
+            margin-top: 20px
+        }
+
+        [hidden] {
+            display: none !important
+        }
+
+        @media(max-width:640px) {
+            nav {
+                height: 65px;
+                padding: 0 22px
+            }
+
+            nav .links {
+                gap: 17px
+            }
+
+            nav a {
+                font-size: 9px
+            }
+
+            .hero {
+                height: calc(100svh - 65px);
+                min-height: 600px
+            }
+
+            .hero h1 {
+                font-size: 83px;
+                line-height: 1.3
+            }
+
+            .hero .eyebrow {
+                font-size: 9px
+            }
+
+            .hero .date {
+                font-size: 11px
+            }
+
+            .section {
+                padding: 72px 25px
+            }
+
+            .quote {
+                font-size: 28px
+            }
+
+            .counter {
+                gap: 13px
+            }
+
+            .unit {
+                min-width: 60px
+            }
+
+            .unit b {
+                font-size: 47px
+            }
+
+            .unit span {
+                font-size: 8px
+            }
+
+            .families,
+            .location-grid,
+            .dress {
+                grid-template-columns: 1fr;
+                gap: 35px
+            }
+
+            .location-grid {
+                gap: 60px
+            }
+
+            .dress {
+                padding-top: 65px
+            }
+
+            .dress-art {
+                padding: 34px 20px
+            }
+
+            .dress-copy {
+                text-align: center
+            }
+
+            .dress .line {
+                margin-left: auto
+            }
+
+            .slide {
+                flex-basis: 84%;
+                height: 390px
+            }
+
+            .gallery-section {
+                padding-top: 25px
+            }
+
+            .entry-box {
+                padding: 55px 18px
+            }
+
+            .entry .script {
+                font-size: 58px
+            }
+
+            .music {
+                right: 15px;
+                bottom: 15px
+            }
+
+            .video-placeholder .serif {
+                font-size: 22px
+            }
+
+            .video-wrap {
+                padding: 65px 18px
+            }
+
+
+
+            .video-shell {
+                aspect-ratio: 4/3
+            }
+        }
+
+        @media(prefers-reduced-motion:reduce) {
+            html {
+                scroll-behavior: auto
+            }
+
+            * {
+                animation: none !important;
+                transition: none !important
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="entry" id="entry">
+        <div class="entry-box">
+            <div class="eyebrow">Una invitación para ti</div>
+            <div class="line"></div>
+            <div class="script">David & Nelly</div>
+            <p class="serif" style="font-size:23px">Hay momentos que merecen<br>compartirse contigo.</p><button
+                class="solid" id="openInvite">Abrir invitación</button>
+            <div class="small">Una experiencia para ver, escuchar y sentir</div>
+        </div>
+    </div>
+    <nav><a class="monogram" href="#inicio" aria-label="Inicio">D <em>&</em> N</a>
+        <div class="links"><a href="#celebracion">Celebración</a><a href="#momentos">Momentos</a><a
+                href="#detalles">Detalles</a></div>
+    </nav>
+    <main>
+        <header class="hero" id="inicio"><img class="hero-bg" id="heroImage"
+                src="https://i.ibb.co/cVNyvgM/2dfd3c99-07b0-449f-bc29-a18cf05a0a57.jpg"
+                alt="Ambientación floral de una boda">
+            <div class="hero-inner">
+                <div class="eyebrow">Con amor, te invitamos a nuestra boda</div>
+                <h1 class="script">David & Nelly</h1>
+                <div class="line" style="background:#e5d4b5"></div>
+                <div class="date" id="heroDate">UNA FECHA PARA RECORDAR</div>
+                <p class="place">TLAXCALA, MÉXICO</p><a class="outline" href="#celebracion">Descubre la celebración</a>
+            </div><a class="scroll" href="#bienvenida" style="text-decoration:none">DESLIZA PARA DESCUBRIR ↓</a>
+        </header>
+        <section class="section" id="bienvenida">
+            <div class="flower">❧</div>
+            <div class="line"></div>
+            <p class="quote serif"><em>El comienzo de una vida juntos.<br>La alegría de compartirla contigo.</em></p>
+            <p class="intro">Queremos celebrar nuestro amor rodeados de las personas que forman parte de nuestra
+                historia. Tu presencia hará de este día un recuerdo aún más especial.</p>
+        </section>
+        <div class="count-section">
+            <section class="section">
+                <div class="eyebrow">Cada vez más cerca</div>
+                <h2>La cuenta hacia nuestro sí</h2>
+                <div class="counter" aria-label="Cuenta regresiva para la boda">
+                    <div class="unit"><b id="days">—</b><span>Días</span></div>
+                    <div class="unit"><b id="hours">—</b><span>Horas</span></div>
+                    <div class="unit"><b id="minutes">—</b><span>Minutos</span></div>
+                    <div class="unit"><b id="seconds">—</b><span>Segundos</span></div>
+                </div>
+                <p class="small" id="countNote">Pronto compartiremos la fecha de nuestra celebración.</p>
+            </section>
+        </div>
+        <section class="section">
+            <div class="eyebrow">Con la bendición de nuestras familias</div>
+            <h2>Quienes nos acompañan</h2>
+            <div class="families">
+                <div>
+                    <div class="eyebrow">Papás del novio</div>
+                    <p class="names">Pedro Sánchez Hernández<br>Bertha Sifuentes López</p>
+                </div>
+                <div>
+                    <div class="eyebrow">Papás de la novia</div>
+                    <p class="names">Cristóbal Ortiz Javier<br>Felicitas Pérez Pérez</p>
+                </div>
+            </div>
+            <div class="godmother">
+                <div class="eyebrow">Madrina de velación</div>
+                <p class="names">María Adolfina López Hernández</p>
+            </div>
+        </section>
+        <div class="locations" id="celebracion">
+            <section class="section">
+                <div class="eyebrow">Dos lugares, un mismo día inolvidable</div>
+                <h2>La celebración</h2>
+                <div class="location-grid">
+                    <article class="location"><svg class="icon" viewBox="0 0 60 60" aria-hidden="true">
+                            <path
+                                d="M30 2v13m-5-8h10M9 56V29l21-14 21 14v27ZM22 56V40a8 8 0 0 1 16 0v16M3 56h54M30 23v8m-4-4h8" />
+                        </svg>
+                        <h3>Ceremonia religiosa</h3>
+                        <div class="eyebrow" id="ceremonyTime">Misa</div>
+                        <p><strong>Iglesia de Nuestra Señora de Guadalupe</strong><br>Calle Emilio Carranza S/N, esquina
+                            con Ignacio Zaragoza, Zona Centro, C.P. 90420, Muñoz de Domingo Arenas, Tlaxcala.</p><a
+                            class="outline" target="_blank" rel="noopener"
+                            href="https://www.google.com/maps/search/?api=1&query=Iglesia+de+Nuestra+Se%C3%B1ora+de+Guadalupe+Emilio+Carranza+Mu%C3%B1oz+de+Domingo+Arenas+Tlaxcala">Ver
+                            ubicación ↗</a>
+                    </article>
+                    <article class="location"><svg class="icon" viewBox="0 0 60 60" aria-hidden="true">
+                            <path
+                                d="m10 5 16 3-4 19a8 8 0 0 1-16-3ZM14 34l-3 17m-7 0 14 3M35 8l16-3 4 19a8 8 0 0 1-16 3ZM47 34l3 17m-7 3 14-3M7 17l17 3m14 0 16-3" />
+                        </svg>
+                        <h3>Recepción</h3>
+                        <div class="eyebrow" id="partyTime">Brindemos por el amor</div>
+                        <p>Camino Real Nte 39,<br>Santa Úrsula Zimatepec,<br>Yauhquemehcan, Tlaxcala.</p><a
+                            class="outline" target="_blank" rel="noopener"
+                            href="https://www.google.com/maps/search/?api=1&query=Camino+Real+Nte+39+Santa+%C3%9Arsula+Zimatepec+Yauhquemehcan+Tlaxcala">Ver
+                            ubicación ↗</a>
+                    </article>
+                </div>
+            </section>
+        </div>
+        <section class="section dress" id="detalles">
+            <div class="dress-art"><svg viewBox="0 0 180 190" aria-label="Ilustración de traje y vestido" role="img">
+                    <path
+                        d="m30 24-15 8-7 84 16 1 3-53-2 105h46L67 64l5 53 15-1-7-84-16-8-15 40ZM30 24l19 40-18-9 5-12-9-8m37-11L49 64l17-9-5-12 8-8M43 23l6 7 7-7m-7 7-5 19 5 15 5-15ZM111 23l8 29-7 24-23 93h77l-24-93-7-24 9-29m-25 29h16m-23 24h30m-31-53c7 11 23 11 33 0" />
+                </svg>
+                <div class="eyebrow">Una ocasión especial</div>
+            </div>
+            <div class="dress-copy">
+                <div class="eyebrow">Código de vestimenta</div>
+                <h2 id="dressTitle">Formal</h2>
+                <div class="line"></div>
+                <p id="dressText">Vestido de fiesta y traje. Elige un look elegante para acompañarnos en este día tan
+                    especial.</p>
+                <p class="small">Tu mejor accesorio será la alegría de celebrar juntos.</p>
+            </div>
+        </section>
+        <section class="section gallery-section" id="momentos">
+            <div class="eyebrow">Instantes que se vuelven eternos</div>
+            <h2>Nuestros momentos</h2>
+            <p class="intro" id="galleryIntro">Un espacio para guardar y compartir nuestra historia.</p>
+            <div class="gallery">
+                <div class="track" id="track">
+                    <div class="slide"><img src="https://i.ibb.co/cVNyvgM/2dfd3c99-07b0-449f-bc29-a18cf05a0a57.jpg"
+                            loading="lazy" alt="Inspiración: flores y ambientación de boda"><span>INSPIRACIÓN · AÑADE
+                            TUS FOTOS</span></div>
+                    <div class="slide"><img src="https://i.ibb.co/PGNwRQBS/18e989fd-b8e7-4a97-8d32-d7ec0a6fef86.jpg"
+                            style="object-position:80% 50%;transform:scale(1.2)" loading="lazy"
+                            alt="Detalle de la decoración floral"><span>TUS RECUERDOS, AQUÍ</span></div>
+                    <div class="slide"><img src="https://i.ibb.co/60XKD1cB/b50c9858-246c-4ca5-b4df-1858ad79bbbe.jpg"
+                            style="object-position:20% 60%" loading="lazy" alt="Ambientación de boda"><span>UNA HISTORIA
+                            POR COMPARTIR</span></div>
+                </div>
+                <div class="gallery-controls"><button class="round" id="prev" aria-label="Foto anterior">←</button><span
+                        class="eyebrow" id="galleryCount">01 / 03</span><button class="round" id="next"
+                        aria-label="Siguiente foto">→</button></div>
+            </div>
+        </section>
+        <div class="video-wrap">
+            <div class="eyebrow">Un recuerdo en movimiento</div>
+            <h2>Nuestra historia, en video</h2>
+            <div class="video-shell">
+                <div class="video-placeholder" id="videoPlaceholder">
+                    <div style="font-size:35px">▷</div>
+                    <div class="serif">Aquí vivirá un recuerdo especial</div>
+                    <p class="small">El video de David & Nelly estará disponible pronto.</p>
+                </div><video id="film" controls playsinline preload="metadata" hidden></video>
+            </div>
+            <p class="small">Al reproducir el video, la música de fondo se pausa.</p>
+        </div>
+    </main>
+    <footer>
+        <div class="script">David & Nelly</div>
+        <p>GRACIAS POR SER PARTE DE NUESTRA HISTORIA</p>
+        <div class="flower">❧</div>
+    </footer>
+    <button class="music" id="musicButton" aria-label="Reproducir música de fondo" aria-pressed="false"
+        data-playing="false"><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span
+            id="musicLabel">Activar música</span></button><audio id="audio" loop preload="none"></audio>
+    <script id="invitation-config"
+        type="application/json">{"date":"2026-12-05T17:00","party":"","dress":"Formal","cover":"","photos":[],"music":"","video":"","guest":false}</script>
+    <script>
+        const $ = id => document.getElementById(id); let config = JSON.parse($('invitation-config').textContent), wantsMusic = false, ctx = null, master = null, timer = null, noteIndex = 0;
+        const audio = $('audio'), film = $('film'); const descriptions = { Formal: 'Vestido de fiesta y traje. Elige un look elegante para acompañarnos en este día tan especial.', Etiqueta: 'Vestido largo y esmoquin o traje de gala para una noche muy especial.', Cóctel: 'Vestido de cóctel y traje o conjunto elegante para compartir esta celebración.' };
+        function render() { if (config.cover) $('heroImage').src = config.cover; if (config.date) { const d = new Date(config.date + '-06:00'); $('heroDate').textContent = new Intl.DateTimeFormat('es-MX', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'America/Mexico_City' }).format(d).toUpperCase(); $('ceremonyTime').textContent = new Intl.DateTimeFormat('es-MX', { hour: 'numeric', minute: '2-digit', timeZone: 'America/Mexico_City' }).format(d); } else { $('heroDate').textContent = 'UNA FECHA PARA RECORDAR'; $('ceremonyTime').textContent = 'Misa'; } $('partyTime').textContent = config.party ? config.party + ' h' : 'Brindemos por el amor'; $('dressTitle').textContent = config.dress; $('dressText').textContent = descriptions[config.dress]; if (config.photos.length) { $('track').replaceChildren(...config.photos.map((src, i) => { let el = document.createElement('div'); el.className = 'slide'; let img = document.createElement('img'); img.src = src; img.alt = 'David y Nelly · Recuerdo ' + (i + 1); img.loading = 'lazy'; el.append(img); return el; })); $('galleryIntro').textContent = 'Pequeños instantes de una historia que sigue creciendo.'; } if (config.music) audio.src = config.music; else audio.removeAttribute('src'); film.hidden = !config.video; $('videoPlaceholder').hidden = !!config.video; if (config.video) film.src = config.video; tick(); updateGallery(); }
+        function tick() { if (!config.date) { ['days', 'hours', 'minutes', 'seconds'].forEach(id => $(id).textContent = '—'); $('countNote').textContent = 'Pronto compartiremos la fecha de nuestra celebración.'; return; } const gap = new Date(config.date + '-06:00').getTime() - Date.now(), s = Math.max(0, Math.floor(gap / 1000));[Math.floor(s / 86400), Math.floor(s % 86400 / 3600), Math.floor(s % 3600 / 60), s % 60].forEach((n, i) => $(['days', 'hours', 'minutes', 'seconds'][i]).textContent = String(n).padStart(2, '0')); $('countNote').textContent = gap <= 0 ? '¡Llegó el día de celebrar nuestro amor!' : 'Hasta el comienzo de nuestra celebración.'; }
+        function setMusicUI(playing) { $('musicButton').dataset.playing = String(playing); $('musicButton').setAttribute('aria-pressed', String(playing)); $('musicButton').setAttribute('aria-label', wantsMusic ? 'Silenciar música de fondo' : 'Reproducir música de fondo'); $('musicLabel').textContent = wantsMusic && !film.paused ? 'En pausa · video' : playing ? 'Silenciar música' : 'Activar música'; }
+        function piano() { if (!ctx) { ctx = new (window.AudioContext || window.webkitAudioContext)(); master = ctx.createGain(); master.gain.value = .14; master.connect(ctx.destination); } ctx.resume(); if (timer) return; const notes = [261.63, 329.63, 392, 523.25, 392, 329.63, 220, 261.63, 329.63, 440, 329.63, 261.63, 174.61, 220, 261.63, 349.23, 261.63, 220, 196, 246.94, 293.66, 392, 293.66, 246.94]; function play() { if (!wantsMusic || !film.paused) return; const f = notes[noteIndex++ % notes.length], t = ctx.currentTime;[1, 2].forEach((m, j) => { const o = ctx.createOscillator(), g = ctx.createGain(); o.type = 'sine'; o.frequency.value = f * m; g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(j ? .09 : .5, t + .025); g.gain.exponentialRampToValueAtTime(.001, t + 2.4); o.connect(g); g.connect(master); o.start(t); o.stop(t + 2.5); }); } play(); timer = setInterval(play, 680); }
+        async function syncMusic() { if (!wantsMusic || !film.paused) { audio.pause(); if (ctx) ctx.suspend(); clearInterval(timer); timer = null; setMusicUI(false); return; } try { if (config.music) await audio.play(); else piano(); setMusicUI(true); } catch (e) { wantsMusic = false; setMusicUI(false); $('musicLabel').textContent = 'Toca para escuchar'; } }
+        $('openInvite').onclick = () => { $('entry').classList.add('hidden'); $('entry').inert = true; wantsMusic = true; syncMusic(); $('musicButton').focus(); }; $('musicButton').onclick = () => { wantsMusic = !wantsMusic; syncMusic(); }; film.addEventListener('play', syncMusic); film.addEventListener('pause', syncMusic); film.addEventListener('ended', syncMusic); audio.addEventListener('error', () => { wantsMusic = false; syncMusic(); $('musicLabel').textContent = 'Audio no disponible'; }); film.addEventListener('error', () => { film.hidden = true; $('videoPlaceholder').hidden = false; $('videoPlaceholder').textContent = 'No se pudo reproducir el video.'; });
+        function updateGallery() { const track = $('track'), n = track.children.length, w = track.firstElementChild.getBoundingClientRect().width + 18, index = Math.min(n - 1, Math.round(track.scrollLeft / w)); $('galleryCount').textContent = String(index + 1).padStart(2, '0') + ' / ' + String(n).padStart(2, '0'); }
+        function move(step) { const t = $('track'), w = t.firstElementChild.getBoundingClientRect().width + 18; let i = Math.round(t.scrollLeft / w) + step; if (i >= t.children.length) i = 0; if (i < 0) i = t.children.length - 1; t.scrollTo({ left: i * w, behavior: 'smooth' }); } $('prev').onclick = () => move(-1); $('next').onclick = () => move(1); $('track').addEventListener('scroll', updateGallery); window.addEventListener('resize', updateGallery);
+        render(); setInterval(tick, 1000);
+    </script>
+</body>
+
+</html>
