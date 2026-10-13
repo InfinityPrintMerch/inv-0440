@@ -1067,7 +1067,7 @@
         data-playing="false"><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span
             id="musicLabel">Activar música</span></button><audio id="audio" src="audio.mp3" loop preload="none"></audio>
     <script id="invitation-config"
-        type="application/json">{"date":"2026-12-05T17:00","party":"","dress":"Formal","cover":"","photos":[],"music":"audio.mp3","video":"","guest":false}</script>
+        type="application/json">{"date":"2026-12-05T17:00","party":"","dress":"Formal","cover":"","photos":[],"music":"audio.mp3","video":"video.mp4","guest":false}</script>
     <script>
         const $ = id => document.getElementById(id); let config = JSON.parse($('invitation-config').textContent), wantsMusic = false, ctx = null, master = null, timer = null, noteIndex = 0;
         const audio = $('audio'), film = $('film'); const descriptions = { Formal: 'Vestido de fiesta y traje. Elige un look elegante para acompañarnos en este día tan especial.', Etiqueta: 'Vestido largo y esmoquin o traje de gala para una noche muy especial.', Cóctel: 'Vestido de cóctel y traje o conjunto elegante para compartir esta celebración.' };
