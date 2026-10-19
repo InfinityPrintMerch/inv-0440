@@ -339,7 +339,6 @@
             color: var(--gold)
         }
 
-
         .flight-path {
             position: absolute;
             top: 8%;
@@ -514,18 +513,20 @@
         }
 
         .slide {
-            flex: 0 0 42%;
+            flex: 0 0 auto;
             scroll-snap-align: center;
             position: relative;
-            height: 430px;
-            background: #e9e1d5;
-            overflow: hidden
+            height: 350px;
+            background: transparent;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
         }
 
         .slide img {
-            width: 100%;
+            width: auto;
             height: 100%;
-            object-fit: cover
+            object-fit: contain;
         }
 
         .slide span {
@@ -796,8 +797,8 @@
             }
 
             .slide {
-                flex-basis: 84%;
-                height: 390px
+                flex-basis: auto;
+                height: 300px
             }
 
             .gallery-section {
@@ -824,8 +825,6 @@
             .video-wrap {
                 padding: 65px 18px
             }
-
-
 
             .video-shell {
                 aspect-ratio: 4/3
@@ -891,18 +890,24 @@
             <div class="eyebrow">Una invitación para ti</div>
             <div class="line"></div>
             <div class="script">David & Nelly</div>
-            <p class="serif" style="font-size:23px">Hay momentos que merecen<br>compartirse contigo.</p><button
-                class="solid" id="openInvite">Abrir invitación</button>
+            <p class="serif" style="font-size:23px">Hay momentos que merecen<br>compartirse contigo.</p>
+            <button class="solid" id="openInvite">Abrir invitación</button>
             <div class="small">Una experiencia para ver, escuchar y sentir</div>
         </div>
     </div>
-    <nav><a class="monogram" href="#inicio" aria-label="Inicio">D <em>&</em> N</a>
-        <div class="links"><a href="#celebracion">Celebración</a><a href="#momentos">Momentos</a><a
-                href="#detalles">Detalles</a></div>
+
+    <nav>
+        <a class="monogram" href="#inicio" aria-label="Inicio">D <em>&</em> N</a>
+        <div class="links">
+            <a href="#celebracion">Celebración</a>
+            <a href="#momentos">Momentos</a>
+            <a href="#detalles">Detalles</a>
+        </div>
     </nav>
+
     <main>
-        <header class="hero" id="inicio"><img class="hero-bg" id="heroImage"
-                src="https://i.ibb.co/cVNyvgM/2dfd3c99-07b0-449f-bc29-a18cf05a0a57.jpg"
+        <header class="hero" id="inicio">
+            <img class="hero-bg" id="heroImage" src="https://i.ibb.co/cVNyvgM/2dfd3c99-07b0-449f-bc29-a18cf05a0a57.jpg"
                 alt="Ambientación floral de una boda">
             <svg class="flight-path" viewBox="0 0 500 260" aria-hidden="true" focusable="false">
                 <path class="flight-dash" d="M24 218 C130 168 114 72 244 93 S374 179 458 42" />
@@ -911,16 +916,22 @@
                         d="M24 0 30 19 49 30 49 36 31 31 31 46 39 51 39 55 25 52 11 55 11 51 19 46 19 31 1 36 1 30 20 19Z" />
                 </g>
             </svg>
-            <div class="passport-stamp"><span>DESTINO</span><b>EL COMIENZO<br>DE NUESTRA HISTORIA</b><span>TLAXCALA ·
-                    MÉXICO</span></div>
+            <div class="passport-stamp">
+                <span>DESTINO</span>
+                <b>EL COMIENZO<br>DE NUESTRA HISTORIA</b>
+                <span>TLAXCALA · MÉXICO</span>
+            </div>
             <div class="hero-inner">
                 <div class="eyebrow">Con amor, te invitamos a nuestra boda</div>
                 <h1 class="script">David & Nelly</h1>
                 <div class="line" style="background:#e5d4b5"></div>
                 <div class="date" id="heroDate">UNA FECHA PARA RECORDAR</div>
-                <p class="place">TLAXCALA, MÉXICO</p><a class="outline" href="#celebracion">Descubre la celebración</a>
-            </div><a class="scroll" href="#bienvenida" style="text-decoration:none">DESLIZA PARA DESCUBRIR ↓</a>
+                <p class="place">TLAXCALA, MÉXICO</p>
+                <a class="outline" href="#celebracion">Descubre la celebración</a>
+            </div>
+            <a class="scroll" href="#bienvenida" style="text-decoration:none">DESLIZA PARA DESCUBRIR ↓</a>
         </header>
+
         <section class="section" id="bienvenida">
             <div class="flower">❧</div>
             <div class="line"></div>
@@ -928,6 +939,7 @@
             <p class="intro">Queremos celebrar nuestro amor rodeados de las personas que forman parte de nuestra
                 historia. Tu presencia hará de este día un recuerdo aún más especial.</p>
         </section>
+
         <div class="count-section">
             <section class="section">
                 <div class="eyebrow">Cada vez más cerca</div>
@@ -941,6 +953,7 @@
                 <p class="small" id="countNote">Pronto compartiremos la fecha de nuestra celebración.</p>
             </section>
         </div>
+
         <section class="section">
             <div class="eyebrow">Con la bendición de nuestras familias</div>
             <h2>Quienes nos acompañan</h2>
@@ -959,45 +972,50 @@
                 <p class="names">María Adolfina López Hernández</p>
             </div>
         </section>
+
         <div class="locations" id="celebracion">
             <section class="section">
                 <div class="eyebrow">Dos lugares, un mismo día inolvidable</div>
                 <h2>La celebración</h2>
                 <div class="location-grid">
-                    <article class="location"><svg class="icon" viewBox="0 0 60 60" aria-hidden="true">
+                    <article class="location">
+                        <svg class="icon" viewBox="0 0 60 60" aria-hidden="true">
                             <path
                                 d="M30 2v13m-5-8h10M9 56V29l21-14 21 14v27ZM22 56V40a8 8 0 0 1 16 0v16M3 56h54M30 23v8m-4-4h8" />
                         </svg>
                         <h3>Ceremonia religiosa</h3>
                         <div class="eyebrow" id="ceremonyTime">Misa</div>
                         <p><strong>Iglesia de Nuestra Señora de Guadalupe</strong><br>Calle Emilio Carranza S/N, esquina
-                            con Ignacio Zaragoza, Zona Centro, C.P. 90420, Muñoz de Domingo Arenas, Tlaxcala.</p><a
-                            class="outline" target="_blank" rel="noopener"
-                            href="https://www.google.com/maps/search/?api=1&query=Iglesia+de+Nuestra+Se%C3%B1ora+de+Guadalupe+Emilio+Carranza+Mu%C3%B1oz+de+Domingo+Arenas+Tlaxcala">Ver
+                            con Ignacio Zaragoza, Zona Centro, C.P. 90420, Muñoz de Domingo Arenas, Tlaxcala.</p>
+                        <a class="outline" target="_blank" rel="noopener"
+                            href="https://maps.app.goo.gl/cQMuSAWp8LUQVFkx7">Ver
                             ubicación ↗</a>
                     </article>
-                    <article class="location"><svg class="icon" viewBox="0 0 60 60" aria-hidden="true">
+                    <article class="location">
+                        <svg class="icon" viewBox="0 0 60 60" aria-hidden="true">
                             <path
                                 d="m10 5 16 3-4 19a8 8 0 0 1-16-3ZM14 34l-3 17m-7 0 14 3M35 8l16-3 4 19a8 8 0 0 1-16 3ZM47 34l3 17m-7 3 14-3M7 17l17 3m14 0 16-3" />
                         </svg>
                         <h3>Recepción</h3>
                         <div class="eyebrow" id="partyTime">Brindemos por el amor</div>
-                        <p>Camino Real Nte 39,<br>Santa Úrsula Zimatepec,<br>Yauhquemehcan, Tlaxcala.</p><a
-                            class="outline" target="_blank" rel="noopener"
+                        <p>Camino Real Nte 39,<br>Santa Úrsula Zimatepec,<br>Yauhquemehcan, Tlaxcala.</p>
+                        <a class="outline" target="_blank" rel="noopener"
                             href="https://www.google.com/maps/search/?api=1&query=Camino+Real+Nte+39+Santa+%C3%9Arsula+Zimatepec+Yauhquemehcan+Tlaxcala">Ver
                             ubicación ↗</a>
                     </article>
                 </div>
                 <div class="map-card">
-                    <div class="map-heading"><span class="eyebrow">Nuestra ruta</span>
+                    <div class="map-heading">
+                        <span class="eyebrow">Nuestra ruta</span>
                         <h3>De la ceremonia a la celebración</h3>
                         <svg class="map-plane" viewBox="0 0 52 52" aria-hidden="true">
                             <path
                                 d="M24 3 30 21 47 29 47 35 31 31 31 44 38 48 38 51 25 48 12 51 12 48 19 44 19 31 3 35 3 29 20 21Z" />
                         </svg>
                     </div>
-                    <div class="map-frame"><iframe title="Mapa y ruta entre la iglesia y la recepción en Tlaxcala"
-                            loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                    <div class="map-frame">
+                        <iframe title="Mapa y ruta entre la iglesia y la recepción en Tlaxcala" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"
                             src="https://www.google.com/maps?output=embed&amp;saddr=Iglesia+de+Nuestra+Se%C3%B1ora+de+Guadalupe%2C+Calle+Emilio+Carranza%2C+Mu%C3%B1oz+de+Domingo+Arenas%2C+Tlaxcala&amp;daddr=Camino+Real+Nte+39%2C+Santa+%C3%9Arsula+Zimatepec%2C+Yauhquemehcan%2C+Tlaxcala"></iframe>
                     </div>
                     <a class="map-link" target="_blank" rel="noopener"
@@ -1008,43 +1026,54 @@
                 </div>
             </section>
         </div>
+
         <section class="section dress" id="detalles">
-            <div class="dress-art"><svg viewBox="0 0 180 190" aria-label="Ilustración de traje y vestido" role="img">
-                    <path
-                        d="m30 24-15 8-7 84 16 1 3-53-2 105h46L67 64l5 53 15-1-7-84-16-8-15 40ZM30 24l19 40-18-9 5-12-9-8m37-11L49 64l17-9-5-12 8-8M43 23l6 7 7-7m-7 7-5 19 5 15 5-15ZM111 23l8 29-7 24-23 93h77l-24-93-7-24 9-29m-25 29h16m-23 24h30m-31-53c7 11 23 11 33 0" />
+            <div class="dress-art">
+                <svg viewBox="0 0 180 190" aria-label="Ilustración de vestido" role="img">
+                    <path d="M71 23l8 29-7 24-23 93h77l-24-93-7-24 9-29m-25 29h16m-23 24h30m-31-53c7 11 23 11 33 0" />
                 </svg>
                 <div class="eyebrow">Una ocasión especial</div>
             </div>
             <div class="dress-copy">
                 <div class="eyebrow">Código de vestimenta</div>
-                <h2 id="dressTitle">Formal</h2>
+                <h2 id="dressTitle">Blanco o Beige</h2>
+                <div class="eyebrow" style="margin-top: -15px; margin-bottom: 20px; color: var(--gold);">Reservado</div>
                 <div class="line"></div>
-                <p id="dressText">Vestido de fiesta y traje. Elige un look elegante para acompañarnos en este día tan
-                    especial.</p>
+                <p id="dressText"></p>
                 <p class="small">Tu mejor accesorio será la alegría de celebrar juntos.</p>
             </div>
         </section>
+
         <section class="section gallery-section" id="momentos">
             <div class="eyebrow">Instantes que se vuelven eternos</div>
             <h2>Nuestros momentos</h2>
             <p class="intro" id="galleryIntro">Un espacio para guardar y compartir nuestra historia.</p>
             <div class="gallery">
                 <div class="track" id="track">
-                    <div class="slide"><img src="https://i.ibb.co/cVNyvgM/2dfd3c99-07b0-449f-bc29-a18cf05a0a57.jpg"
-                            loading="lazy" alt="Inspiración: flores y ambientación de boda"><span>INSPIRACIÓN · AÑADE
-                            TUS FOTOS</span></div>
-                    <div class="slide"><img src="https://i.ibb.co/PGNwRQBS/18e989fd-b8e7-4a97-8d32-d7ec0a6fef86.jpg"
-                            style="object-position:80% 50%;transform:scale(1.2)" loading="lazy"
-                            alt="Detalle de la decoración floral"><span>TUS RECUERDOS, AQUÍ</span></div>
-                    <div class="slide"><img src="https://i.ibb.co/60XKD1cB/b50c9858-246c-4ca5-b4df-1858ad79bbbe.jpg"
-                            style="object-position:20% 60%" loading="lazy" alt="Ambientación de boda"><span>UNA HISTORIA
-                            POR COMPARTIR</span></div>
+                    <div class="slide">
+                        <img src="https://i.ibb.co/cVNyvgM/2dfd3c99-07b0-449f-bc29-a18cf05a0a57.jpg" loading="lazy"
+                            alt="Inspiración: flores y ambientación de boda">
+                        <span>INSPIRACIÓN · AÑADE TUS FOTOS</span>
+                    </div>
+                    <div class="slide">
+                        <img src="https://i.ibb.co/PGNwRQBS/18e989fd-b8e7-4a97-8d32-d7ec0a6fef86.jpg" loading="lazy"
+                            alt="Detalle de la decoración floral">
+                        <span>TUS RECUERDOS, AQUÍ</span>
+                    </div>
+                    <div class="slide">
+                        <img src="https://i.ibb.co/60XKD1cB/b50c9858-246c-4ca5-b4df-1858ad79bbbe.jpg" loading="lazy"
+                            alt="Ambientación de boda">
+                        <span>UNA HISTORIA POR COMPARTIR</span>
+                    </div>
                 </div>
-                <div class="gallery-controls"><button class="round" id="prev" aria-label="Foto anterior">←</button><span
-                        class="eyebrow" id="galleryCount">01 / 03</span><button class="round" id="next"
-                        aria-label="Siguiente foto">→</button></div>
+                <div class="gallery-controls">
+                    <button class="round" id="prev" aria-label="Foto anterior">←</button>
+                    <span class="eyebrow" id="galleryCount">01 / 03</span>
+                    <button class="round" id="next" aria-label="Siguiente foto">→</button>
+                </div>
             </div>
         </section>
+
         <div class="video-wrap">
             <div class="eyebrow">Un recuerdo en movimiento</div>
             <h2>Nuestra historia, en video</h2>
@@ -1053,33 +1082,241 @@
                     <div style="font-size:35px">▷</div>
                     <div class="serif">Aquí vivirá un recuerdo especial</div>
                     <p class="small">El video de David & Nelly estará disponible pronto.</p>
-                </div><video id="film" controls playsinline preload="metadata" hidden></video>
+                </div>
+                <video id="film" controls playsinline preload="metadata" hidden></video>
             </div>
             <p class="small">Al reproducir el video, la música de fondo se pausa.</p>
         </div>
     </main>
+
     <footer>
         <div class="script">David & Nelly</div>
         <p>GRACIAS POR SER PARTE DE NUESTRA HISTORIA</p>
         <div class="flower">❧</div>
     </footer>
+
     <button class="music" id="musicButton" aria-label="Reproducir música de fondo" aria-pressed="false"
-        data-playing="false"><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span
-            id="musicLabel">Activar música</span></button><audio id="audio" src="audio.mp3" loop preload="none"></audio>
-    <script id="invitation-config"
-        type="application/json">{"date":"2026-12-05T17:00","party":"","dress":"Formal","cover":"","photos":[],"music":"audio.mp3","video":"video.mp4","guest":false}</script>
+        data-playing="false">
+        <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span id="musicLabel">Activar música</span>
+    </button>
+
+    <audio id="audio" src="audio.mp3" loop preload="none"></audio>
+
+    <script id="invitation-config" type="application/json">
+        {"date":"2026-12-05T17:00","party":"","dress":"Blanco o Beige","cover":"","photos":[],"music":"audio.mp3","video":"video.mp4","guest":false}
+    </script>
+
+    <!-- Script limpio y estructurado -->
     <script>
-        const $ = id => document.getElementById(id); let config = JSON.parse($('invitation-config').textContent), wantsMusic = false, ctx = null, master = null, timer = null, noteIndex = 0;
-        const audio = $('audio'), film = $('film'); const descriptions = { Formal: 'Vestido de fiesta y traje. Elige un look elegante para acompañarnos en este día tan especial.', Etiqueta: 'Vestido largo y esmoquin o traje de gala para una noche muy especial.', Cóctel: 'Vestido de cóctel y traje o conjunto elegante para compartir esta celebración.' };
-        function render() { if (config.cover) $('heroImage').src = config.cover; if (config.date) { const d = new Date(config.date + '-06:00'); $('heroDate').textContent = new Intl.DateTimeFormat('es-MX', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'America/Mexico_City' }).format(d).toUpperCase(); $('ceremonyTime').textContent = new Intl.DateTimeFormat('es-MX', { hour: 'numeric', minute: '2-digit', timeZone: 'America/Mexico_City' }).format(d); } else { $('heroDate').textContent = 'UNA FECHA PARA RECORDAR'; $('ceremonyTime').textContent = 'Misa'; } $('partyTime').textContent = config.party ? config.party + ' h' : 'Brindemos por el amor'; $('dressTitle').textContent = config.dress; $('dressText').textContent = descriptions[config.dress]; if (config.photos.length) { $('track').replaceChildren(...config.photos.map((src, i) => { let el = document.createElement('div'); el.className = 'slide'; let img = document.createElement('img'); img.src = src; img.alt = 'David y Nelly · Recuerdo ' + (i + 1); img.loading = 'lazy'; el.append(img); return el; })); $('galleryIntro').textContent = 'Pequeños instantes de una historia que sigue creciendo.'; } if (config.music) audio.src = config.music; else audio.removeAttribute('src'); film.hidden = !config.video; $('videoPlaceholder').hidden = !!config.video; if (config.video) film.src = config.video; tick(); updateGallery(); }
-        function tick() { if (!config.date) { ['days', 'hours', 'minutes', 'seconds'].forEach(id => $(id).textContent = '—'); $('countNote').textContent = 'Pronto compartiremos la fecha de nuestra celebración.'; return; } const gap = new Date(config.date + '-06:00').getTime() - Date.now(), s = Math.max(0, Math.floor(gap / 1000));[Math.floor(s / 86400), Math.floor(s % 86400 / 3600), Math.floor(s % 3600 / 60), s % 60].forEach((n, i) => $(['days', 'hours', 'minutes', 'seconds'][i]).textContent = String(n).padStart(2, '0')); $('countNote').textContent = gap <= 0 ? '¡Llegó el día de celebrar nuestro amor!' : 'Hasta el comienzo de nuestra celebración.'; }
-        function setMusicUI(playing) { $('musicButton').dataset.playing = String(playing); $('musicButton').setAttribute('aria-pressed', String(playing)); $('musicButton').setAttribute('aria-label', wantsMusic ? 'Silenciar música de fondo' : 'Reproducir música de fondo'); $('musicLabel').textContent = wantsMusic && !film.paused ? 'En pausa · video' : playing ? 'Silenciar música' : 'Activar música'; }
-        function piano() { if (!ctx) { ctx = new (window.AudioContext || window.webkitAudioContext)(); master = ctx.createGain(); master.gain.value = .14; master.connect(ctx.destination); } ctx.resume(); if (timer) return; const notes = [261.63, 329.63, 392, 523.25, 392, 329.63, 220, 261.63, 329.63, 440, 329.63, 261.63, 174.61, 220, 261.63, 349.23, 261.63, 220, 196, 246.94, 293.66, 392, 293.66, 246.94]; function play() { if (!wantsMusic || !film.paused) return; const f = notes[noteIndex++ % notes.length], t = ctx.currentTime;[1, 2].forEach((m, j) => { const o = ctx.createOscillator(), g = ctx.createGain(); o.type = 'sine'; o.frequency.value = f * m; g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(j ? .09 : .5, t + .025); g.gain.exponentialRampToValueAtTime(.001, t + 2.4); o.connect(g); g.connect(master); o.start(t); o.stop(t + 2.5); }); } play(); timer = setInterval(play, 680); }
-        async function syncMusic() { if (!wantsMusic || !film.paused) { audio.pause(); if (ctx) ctx.suspend(); clearInterval(timer); timer = null; setMusicUI(false); return; } try { if (config.music) await audio.play(); else piano(); setMusicUI(true); } catch (e) { wantsMusic = false; setMusicUI(false); $('musicLabel').textContent = 'Toca para escuchar'; } }
-        $('openInvite').onclick = () => { $('entry').classList.add('hidden'); $('entry').inert = true; wantsMusic = true; syncMusic(); $('musicButton').focus(); }; $('musicButton').onclick = () => { wantsMusic = !wantsMusic; syncMusic(); }; film.addEventListener('play', syncMusic); film.addEventListener('pause', syncMusic); film.addEventListener('ended', syncMusic); audio.addEventListener('error', () => { wantsMusic = false; syncMusic(); $('musicLabel').textContent = 'Audio no disponible'; }); film.addEventListener('error', () => { film.hidden = true; $('videoPlaceholder').hidden = false; $('videoPlaceholder').textContent = 'No se pudo reproducir el video.'; });
-        function updateGallery() { const track = $('track'), n = track.children.length, w = track.firstElementChild.getBoundingClientRect().width + 18, index = Math.min(n - 1, Math.round(track.scrollLeft / w)); $('galleryCount').textContent = String(index + 1).padStart(2, '0') + ' / ' + String(n).padStart(2, '0'); }
-        function move(step) { const t = $('track'), w = t.firstElementChild.getBoundingClientRect().width + 18; let i = Math.round(t.scrollLeft / w) + step; if (i >= t.children.length) i = 0; if (i < 0) i = t.children.length - 1; t.scrollTo({ left: i * w, behavior: 'smooth' }); } $('prev').onclick = () => move(-1); $('next').onclick = () => move(1); $('track').addEventListener('scroll', updateGallery); window.addEventListener('resize', updateGallery);
-        render(); setInterval(tick, 1000);
+        const $ = id => document.getElementById(id);
+
+        let config = JSON.parse($('invitation-config').textContent);
+        let wantsMusic = false;
+        let ctx = null;
+        let master = null;
+        let timer = null;
+        let noteIndex = 0;
+
+        const audio = $('audio');
+        const film = $('film');
+
+        const descriptions = {
+            'Blanco o Beige': 'El color blanco es exclusivo para la novia. Agradecemos evitar este tono en tu vestimenta.',
+            'Formal': 'Vestido de fiesta y traje. Elige un look elegante para acompañarnos en este día tan especial.',
+            'Etiqueta': 'Vestido largo y esmoquin o traje de gala para una noche muy especial.',
+            'Cóctel': 'Vestido de cóctel y traje o conjunto elegante para compartir esta celebración.'
+        };
+
+        function render() {
+            if (config.cover) $('heroImage').src = config.cover;
+
+            if (config.date) {
+                const d = new Date(config.date + '-06:00');
+                $('heroDate').textContent = new Intl.DateTimeFormat('es-MX', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric',
+                    timeZone: 'America/Mexico_City'
+                }).format(d).toUpperCase();
+                $('ceremonyTime').textContent = new Intl.DateTimeFormat('es-MX', {
+                    hour: 'numeric',
+                    minute: '2-digit',
+                    timeZone: 'America/Mexico_City'
+                }).format(d);
+            } else {
+                $('heroDate').textContent = 'UNA FECHA PARA RECORDAR';
+                $('ceremonyTime').textContent = 'Misa';
+            }
+
+            $('partyTime').textContent = config.party ? config.party + ' h' : 'Brindemos por el amor';
+            $('dressTitle').textContent = config.dress;
+            $('dressText').textContent = descriptions[config.dress];
+
+            if (config.photos.length) {
+                $('track').replaceChildren(...config.photos.map((src, i) => {
+                    let el = document.createElement('div');
+                    el.className = 'slide';
+                    let img = document.createElement('img');
+                    img.src = src;
+                    img.alt = 'David y Nelly · Recuerdo ' + (i + 1);
+                    img.loading = 'lazy';
+                    el.append(img);
+                    return el;
+                }));
+                $('galleryIntro').textContent = 'Pequeños instantes de una historia que sigue creciendo.';
+            }
+
+            if (config.music) audio.src = config.music;
+            else audio.removeAttribute('src');
+
+            film.hidden = !config.video;
+            $('videoPlaceholder').hidden = !!config.video;
+            if (config.video) film.src = config.video;
+
+            tick();
+            updateGallery();
+        }
+
+        function tick() {
+            if (!config.date) {
+                ['days', 'hours', 'minutes', 'seconds'].forEach(id => $(id).textContent = '—');
+                $('countNote').textContent = 'Pronto compartiremos la fecha de nuestra celebración.';
+                return;
+            }
+
+            const gap = new Date(config.date + '-06:00').getTime() - Date.now();
+            const s = Math.max(0, Math.floor(gap / 1000));
+
+            [
+                Math.floor(s / 86400),
+                Math.floor(s % 86400 / 3600),
+                Math.floor(s % 3600 / 60),
+                s % 60
+            ].forEach((n, i) => {
+                $(['days', 'hours', 'minutes', 'seconds'][i]).textContent = String(n).padStart(2, '0');
+            });
+
+            $('countNote').textContent = gap <= 0 ? '¡Llegó el día de celebrar nuestro amor!' : 'Hasta el comienzo de nuestra celebración.';
+        }
+
+        function setMusicUI(playing) {
+            $('musicButton').dataset.playing = String(playing);
+            $('musicButton').setAttribute('aria-pressed', String(playing));
+            $('musicButton').setAttribute('aria-label', wantsMusic ? 'Silenciar música de fondo' : 'Reproducir música de fondo');
+            $('musicLabel').textContent = wantsMusic && !film.paused ? 'En pausa · video' : playing ? 'Silenciar música' : 'Activar música';
+        }
+
+        function piano() {
+            if (!ctx) {
+                ctx = new (window.AudioContext || window.webkitAudioContext)();
+                master = ctx.createGain();
+                master.gain.value = .14;
+                master.connect(ctx.destination);
+            }
+            ctx.resume();
+            if (timer) return;
+
+            const notes = [261.63, 329.63, 392, 523.25, 392, 329.63, 220, 261.63, 329.63, 440, 329.63, 261.63, 174.61, 220, 261.63, 349.23, 261.63, 220, 196, 246.94, 293.66, 392, 293.66, 246.94];
+
+            function play() {
+                if (!wantsMusic || !film.paused) return;
+                const f = notes[noteIndex++ % notes.length];
+                const t = ctx.currentTime;
+
+                [1, 2].forEach((m, j) => {
+                    const o = ctx.createOscillator();
+                    const g = ctx.createGain();
+                    o.type = 'sine';
+                    o.frequency.value = f * m;
+                    g.gain.setValueAtTime(0, t);
+                    g.gain.linearRampToValueAtTime(j ? .09 : .5, t + .025);
+                    g.gain.exponentialRampToValueAtTime(.001, t + 2.4);
+                    o.connect(g);
+                    g.connect(master);
+                    o.start(t);
+                    o.stop(t + 2.5);
+                });
+            }
+
+            play();
+            timer = setInterval(play, 680);
+        }
+
+        async function syncMusic() {
+            if (!wantsMusic || !film.paused) {
+                audio.pause();
+                if (ctx) ctx.suspend();
+                clearInterval(timer);
+                timer = null;
+                setMusicUI(false);
+                return;
+            }
+
+            try {
+                if (config.music) await audio.play();
+                else piano();
+                setMusicUI(true);
+            } catch (e) {
+                wantsMusic = false;
+                setMusicUI(false);
+                $('musicLabel').textContent = 'Toca para escuchar';
+            }
+        }
+
+        $('openInvite').onclick = () => {
+            $('entry').classList.add('hidden');
+            $('entry').inert = true;
+            wantsMusic = true;
+            syncMusic();
+            $('musicButton').focus();
+        };
+
+        $('musicButton').onclick = () => {
+            wantsMusic = !wantsMusic;
+            syncMusic();
+        };
+
+        film.addEventListener('play', syncMusic);
+        film.addEventListener('pause', syncMusic);
+        film.addEventListener('ended', syncMusic);
+
+        audio.addEventListener('error', () => {
+            wantsMusic = false;
+            syncMusic();
+            $('musicLabel').textContent = 'Audio no disponible';
+        });
+
+        film.addEventListener('error', () => {
+            film.hidden = true;
+            $('videoPlaceholder').hidden = false;
+            $('videoPlaceholder').textContent = 'No se pudo reproducir el video.';
+        });
+
+        function updateGallery() {
+            const track = $('track');
+            const n = track.children.length;
+            const w = track.firstElementChild.getBoundingClientRect().width + 18;
+            const index = Math.min(n - 1, Math.round(track.scrollLeft / w));
+            $('galleryCount').textContent = String(index + 1).padStart(2, '0') + ' / ' + String(n).padStart(2, '0');
+        }
+
+        function move(step) {
+            const t = $('track');
+            const w = t.firstElementChild.getBoundingClientRect().width + 18;
+            let i = Math.round(t.scrollLeft / w) + step;
+            if (i >= t.children.length) i = 0;
+            if (i < 0) i = t.children.length - 1;
+            t.scrollTo({ left: i * w, behavior: 'smooth' });
+        }
+
+        $('prev').onclick = () => move(-1);
+        $('next').onclick = () => move(1);
+        $('track').addEventListener('scroll', updateGallery);
+        window.addEventListener('resize', updateGallery);
+
+        render();
+        setInterval(tick, 1000);
     </script>
 </body>
 
