@@ -40,7 +40,8 @@
         button,
         a,
         input,
-        select {
+        select,
+        textarea {
             -webkit-tap-highlight-color: transparent
         }
 
@@ -59,7 +60,8 @@
 
         button,
         input,
-        select {
+        select,
+        textarea {
             font: inherit
         }
 
@@ -237,6 +239,84 @@
             font-size: 32px;
             line-height: 1
         }
+
+        /* --- ESTILOS PARA LAS FRASES (CARRUSEL ELEGANTE) --- */
+        .phrases-slider {
+            position: relative;
+            max-width: 850px;
+            margin: 45px auto 0;
+        }
+
+        .phrase-slides-container {
+            position: relative;
+            min-height: 220px;
+            display: grid;
+            place-items: center;
+        }
+
+        .phrase-slide {
+            grid-area: 1 / 1;
+            opacity: 0;
+            transform: scale(0.98) translateY(15px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            pointer-events: none;
+            visibility: hidden;
+            width: 100%;
+        }
+
+        .phrase-slide.active {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            pointer-events: auto;
+            visibility: visible;
+        }
+
+        .phrase-slide p {
+            font-size: 26px;
+            line-height: 1.4;
+            color: var(--navy);
+            margin: 0;
+            font-style: italic;
+        }
+
+        .phrase-icon {
+            color: var(--gold);
+            font-size: 28px;
+            margin-bottom: 15px;
+            opacity: 0.7;
+            line-height: 1;
+        }
+
+        .phrase-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 10px;
+        }
+
+        .phrase-dots {
+            display: flex;
+            gap: 12px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #d7cbbb;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            padding: 0;
+        }
+
+        .dot.active {
+            background: var(--gold);
+            transform: scale(1.4);
+        }
+
+        /* ------------------------------- */
 
         .count-section {
             background: #eee9df
@@ -595,6 +675,92 @@
             color: #c8c0b3
         }
 
+        /* --- ESTILOS DE ASISTENCIA Y MODAL --- */
+        .rsvp-section {
+            background: #eee9df;
+            padding: 85px 24px;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(16, 40, 75, 0.85);
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 1;
+            transition: opacity 0.3s;
+        }
+
+        .modal-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .modal-box {
+            background: var(--paper);
+            border: 1px solid var(--gold);
+            outline: 1px solid #dfd3bf;
+            outline-offset: 6px;
+            padding: 40px 30px;
+            max-width: 450px;
+            width: 100%;
+            position: relative;
+            text-align: left;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: transparent;
+            border: none;
+            font-size: 20px;
+            color: var(--navy);
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--navy);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d7cbbb;
+            background: #fff;
+            color: var(--ink);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: 2px solid var(--gold);
+            border-color: var(--gold);
+        }
+
+        /* ------------------------------------- */
+
         footer {
             text-align: center;
             padding: 65px 20px 100px
@@ -720,7 +886,7 @@
             }
 
             nav .links {
-                gap: 17px
+                gap: 15px
             }
 
             nav a {
@@ -751,6 +917,14 @@
 
             .quote {
                 font-size: 28px
+            }
+
+            .phrase-slides-container {
+                min-height: 250px;
+            }
+
+            .phrase-slide p {
+                font-size: 20px;
             }
 
             .counter {
@@ -807,6 +981,10 @@
 
             .entry-box {
                 padding: 55px 18px
+            }
+
+            .modal-box {
+                padding: 35px 20px;
             }
 
             .entry .script {
@@ -885,6 +1063,40 @@
 </head>
 
 <body>
+    <!-- Modal de Asistencia -->
+    <div class="modal-overlay hidden" id="rsvpModal">
+        <div class="modal-box">
+            <button class="close-modal" id="btnCloseModal" aria-label="Cerrar">✕</button>
+            <div class="eyebrow">Detalles de asistencia</div>
+            <h3 style="margin-top: 10px; margin-bottom: 25px;">Confirma tu lugar</h3>
+
+            <div class="form-group">
+                <label for="guestName">Nombre completo</label>
+                <input type="text" id="guestName" placeholder="Ej. Familia Pérez o Juan Pérez" required>
+            </div>
+
+            <div class="form-group">
+                <label for="guestCount">Número de asistentes</label>
+                <select id="guestCount">
+                    <option value="1">1 persona</option>
+                    <option value="2">2 personas</option>
+                    <option value="3">3 personas</option>
+                    <option value="4">4 personas</option>
+                    <option value="5">5 personas</option>
+                    <option value="0">Lamentablemente no podré asistir</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="guestMessage">Mensaje para los novios (Opcional)</label>
+                <textarea id="guestMessage" rows="3" placeholder="¡Escríbenos unas palabras!"></textarea>
+            </div>
+
+            <button class="solid" id="btnSendWhatsApp" style="width:100%; margin-top:10px;">Enviar confirmación por
+                WhatsApp</button>
+        </div>
+    </div>
+
     <div class="entry" id="entry">
         <div class="entry-box">
             <div class="eyebrow">Una invitación para ti</div>
@@ -902,6 +1114,7 @@
             <a href="#celebracion">Celebración</a>
             <a href="#momentos">Momentos</a>
             <a href="#detalles">Detalles</a>
+            <a href="#asistencia">Asistencia</a>
         </div>
     </nav>
 
@@ -938,6 +1151,59 @@
             <p class="quote serif"><em>El comienzo de una vida juntos.<br>La alegría de compartirla contigo.</em></p>
             <p class="intro">Queremos celebrar nuestro amor rodeados de las personas que forman parte de nuestra
                 historia. Tu presencia hará de este día un recuerdo aún más especial.</p>
+        </section>
+
+        <!-- SECCIÓN DE FRASES CON CARRUSEL -->
+        <section class="section" id="frases">
+            <div class="eyebrow">Nuestra historia en palabras</div>
+            <h2>Frases que nos inspiran</h2>
+
+            <div class="phrases-slider">
+                <div class="phrase-slides-container" id="phraseSlidesContainer">
+                    <div class="phrase-slide active">
+                        <div class="phrase-icon">❝</div>
+                        <p class="serif">El amor nos unió, nuestros corazones se eligieron y hoy queremos celebrar el
+                            comienzo de nuestra historia para toda la vida.</p>
+                        <div class="phrase-icon" style="margin-top: 15px; margin-bottom: 0;">❞</div>
+                    </div>
+
+                    <div class="phrase-slide">
+                        <div class="phrase-icon">❝</div>
+                        <p class="serif">Dios cruzó nuestros caminos, el amor unió nuestras vidas y hoy elegimos caminar
+                            juntos para siempre.</p>
+                        <div class="phrase-icon" style="margin-top: 15px; margin-bottom: 0;">❞</div>
+                    </div>
+
+                    <div class="phrase-slide">
+                        <div class="phrase-icon">❝</div>
+                        <p class="serif">Hay historias que nacen del destino y amores que están hechos para durar toda
+                            la
+                            vida. Hoy queremos compartir con ustedes el inicio de nuestro para siempre.</p>
+                        <div class="phrase-icon" style="margin-top: 15px; margin-bottom: 0;">❞</div>
+                    </div>
+
+                    <div class="phrase-slide">
+                        <div class="phrase-icon">❝</div>
+                        <p class="serif">Te elegiría mil veces, en mil vidas diferentes. Porque mi lugar favorito
+                            siempre
+                            será a tu lado.</p>
+                        <div class="phrase-icon" style="margin-top: 15px; margin-bottom: 0;">❞</div>
+                    </div>
+
+                    <div class="phrase-slide">
+                        <div class="phrase-icon">❝</div>
+                        <p class="serif">Hoy comienza nuestro capítulo más hermoso: una vida juntos, miles de sueños por
+                            cumplir y un amor que crecerá con cada amanecer.</p>
+                        <div class="phrase-icon" style="margin-top: 15px; margin-bottom: 0;">❞</div>
+                    </div>
+                </div>
+
+                <div class="phrase-controls">
+                    <button class="round" id="prevPhrase" aria-label="Frase anterior">←</button>
+                    <div class="phrase-dots" id="phraseDots"></div>
+                    <button class="round" id="nextPhrase" aria-label="Siguiente frase">→</button>
+                </div>
+            </div>
         </section>
 
         <div class="count-section">
@@ -994,7 +1260,7 @@
                     <article class="location">
                         <svg class="icon" viewBox="0 0 60 60" aria-hidden="true">
                             <path
-                                d="m10 5 16 3-4 19a8 8 0 0 1-16-3ZM14 34l-3 17m-7 0 14 3M35 8l16-3 4 19a8 8 0 0 1-16 3ZM47 34l3 17m-7 3 14-3M7 17l17 3m14 0 16-3" />
+                                d="m10 5 16 3-4 19a8 8 0 0 1-16-3sZM14 34l-3 17m-7 0 14 3M35 8l16-3 4 19a8 8 0 0 1-16 3ZM47 34l3 17m-7 3 14-3M7 17l17 3m14 0 16-3" />
                         </svg>
                         <h3>Recepción</h3>
                         <div class="eyebrow" id="partyTime">Brindemos por el amor</div>
@@ -1065,6 +1331,56 @@
                             alt="Ambientación de boda">
                         <span>UNA HISTORIA POR COMPARTIR</span>
                     </div>
+                    <div class="slide">
+                        <img src="https://i.ibb.co/JWGWyqrd/709c41a6-e0ba-4412-9c03-c566cd07e9e2.jpg" loading="lazy"
+                            alt="Detalle de boda y ambientación">
+                        <span>MOMENTOS INOLVIDABLES</span>
+                    </div>
+                    <div class="slide">
+                        <img src="https://i.ibb.co/BV5y2vW8/444fe356-1ebb-48e9-8c15-b5862859ebcb.jpg" loading="lazy"
+                            alt="Detalle de boda y ambientación">
+                        <span>CADA DETALLE CUENTA</span>
+                    </div>
+                    <div class="slide">
+                        <img src="https://i.ibb.co/j9yjqsfN/7e78f812-ef09-48fb-8d50-11a0f3d2d232.jpg" loading="lazy"
+                            alt="Detalle de boda y ambientación">
+                        <span>CELEBRANDO EL AMOR</span>
+                    </div>
+                    <div class="slide">
+                        <img src="https://i.ibb.co/WpHtB7rq/2a27d6d1-b550-476d-8b12-edc9992e5c9f.jpg" loading="lazy"
+                            alt="Detalle de boda y ambientación">
+                        <span>RECUERDOS PARA SIEMPRE</span>
+                    </div>
+                    <div class="slide">
+                        <img src="https://i.ibb.co/xR3RL3d/21694153-0891-4b4d-966e-89cb320d5d36.jpg" loading="lazy"
+                            alt="Detalle de boda y ambientación">
+                        <span>UN DÍA MÁGICO</span>
+                    </div>
+                    <div class="slide">
+                        <img src="https://i.ibb.co/h1gPc8Q0/f971a533-e4b4-4df1-b115-5173701e138a.jpg" loading="lazy"
+                            alt="Detalle de boda y ambientación">
+                        <span>EMOCIONES Y COMPLICIDAD</span>
+                    </div>
+                    <div class="slide">
+                        <img src="https://i.ibb.co/HTydYV7b/c41defdd-83ee-4485-8b6f-d2aaed616714.jpg" loading="lazy"
+                            alt="Detalle de boda y ambientación">
+                        <span>NUESTRA AVENTURA COMIENZA</span>
+                    </div>
+                    <div class="slide">
+                        <img src="https://i.ibb.co/S7WNJM2z/4226a4b0-c1d5-455c-9258-c0d7f0655092.jpg" loading="lazy"
+                            alt="Detalle de boda y ambientación">
+                        <span>JUNTOS EN CADA PASO</span>
+                    </div>
+                    <div class="slide">
+                        <img src="https://i.ibb.co/gMdQqhfJ/f7a8ec38-41d2-48ca-af74-72aaefaa4b19.jpg" loading="lazy"
+                            alt="Detalle de boda y ambientación">
+                        <span>HISTORIAS QUE INSPIRAN</span>
+                    </div>
+                    <div class="slide">
+                        <img src="https://i.ibb.co/kVfzpyMb/3c0aab31-fcc6-43c6-956b-6f51f5773fea.jpg" loading="lazy"
+                            alt="Detalle de boda y ambientación">
+                        <span>FELICIDAD COMPARTIDA</span>
+                    </div>
                 </div>
                 <div class="gallery-controls">
                     <button class="round" id="prev" aria-label="Foto anterior">←</button>
@@ -1087,6 +1403,18 @@
             </div>
             <p class="small">Al reproducir el video, la música de fondo se pausa.</p>
         </div>
+
+        <!-- SECCIÓN DE ASISTENCIA -->
+        <section class="section rsvp-section" id="asistencia">
+            <div class="flower">❧</div>
+            <div class="line"></div>
+            <div class="eyebrow">Nos encantaría contar contigo</div>
+            <h2>Confirmar Asistencia</h2>
+            <p class="intro" style="margin-bottom: 30px;">Por favor, confírmanos tu asistencia para organizar cada
+                detalle con mucho amor. Tu presencia es nuestro mejor regalo.</p>
+            <button class="solid" id="btnOpenModal">Confirmar por WhatsApp</button>
+        </section>
+
     </main>
 
     <footer>
@@ -1120,6 +1448,7 @@
 
         const audio = $('audio');
         const film = $('film');
+        const rsvpModal = $('rsvpModal');
 
         const descriptions = {
             'Blanco o Beige': 'El color blanco es exclusivo para la novia. Agradecemos evitar este tono en tu vestimenta.',
@@ -1133,20 +1462,13 @@
 
             if (config.date) {
                 const d = new Date(config.date + '-06:00');
-                $('heroDate').textContent = new Intl.DateTimeFormat('es-MX', {
-                    day: 'numeric',
-                    month: 'long',
-                    year: 'numeric',
-                    timeZone: 'America/Mexico_City'
-                }).format(d).toUpperCase();
-                $('ceremonyTime').textContent = new Intl.DateTimeFormat('es-MX', {
+                $('heroDate').textContent = new Intl.DateTimeFormat('es-MX', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'America/Mexico_City' }).format(d).toUpperCase(); $('ceremonyTime').textContent = new Intl.DateTimeFormat('es-MX', {
                     hour: 'numeric',
                     minute: '2-digit',
                     timeZone: 'America/Mexico_City'
                 }).format(d);
             } else {
-                $('heroDate').textContent = 'UNA FECHA PARA RECORDAR';
-                $('ceremonyTime').textContent = 'Misa';
+                $('heroDate').textContent = 'UNA FECHA PARA RECORDAR'; $('ceremonyTime').textContent = 'Misa';
             }
 
             $('partyTime').textContent = config.party ? config.party + ' h' : 'Brindemos por el amor';
@@ -1180,8 +1502,7 @@
 
         function tick() {
             if (!config.date) {
-                ['days', 'hours', 'minutes', 'seconds'].forEach(id => $(id).textContent = '—');
-                $('countNote').textContent = 'Pronto compartiremos la fecha de nuestra celebración.';
+                ['days', 'hours', 'minutes', 'seconds'].forEach(id => $(id).textContent = '—'); $('countNote').textContent = 'Pronto compartiremos la fecha de nuestra celebración.';
                 return;
             }
 
@@ -1202,8 +1523,7 @@
 
         function setMusicUI(playing) {
             $('musicButton').dataset.playing = String(playing);
-            $('musicButton').setAttribute('aria-pressed', String(playing));
-            $('musicButton').setAttribute('aria-label', wantsMusic ? 'Silenciar música de fondo' : 'Reproducir música de fondo');
+            $('musicButton').setAttribute('aria-pressed', String(playing)); $('musicButton').setAttribute('aria-label', wantsMusic ? 'Silenciar música de fondo' : 'Reproducir música de fondo');
             $('musicLabel').textContent = wantsMusic && !film.paused ? 'En pausa · video' : playing ? 'Silenciar música' : 'Activar música';
         }
 
@@ -1264,9 +1584,54 @@
             }
         }
 
+        // Lógica de apertura/cierre de Modal
+        $('btnOpenModal').onclick = () => {
+            rsvpModal.classList.remove('hidden');
+        };
+
+        $('btnCloseModal').onclick = () => {
+            rsvpModal.classList.add('hidden');
+        };
+
+        rsvpModal.addEventListener('click', (e) => {
+            if (e.target === rsvpModal) {
+                rsvpModal.classList.add('hidden');
+            }
+        });
+
+        // Lógica para el envío de WhatsApp
+        $('btnSendWhatsApp').onclick = () => {
+            const name = $('guestName').value.trim();
+            const count = $('guestCount').value;
+            const message = $('guestMessage').value.trim();
+
+            if (!name) {
+                alert("Por favor, ingresa tu nombre completo para confirmar.");
+                return;
+            }
+
+            let estadoAsistencia = count === "0"
+                ? "Lamentablemente no podré asistir. Les deseo lo mejor en este día tan especial."
+                : `Confirmo mi asistencia para ${count} persona(s).`;
+
+            let waText = `¡Hola David y Nelly!\n\n`;
+            waText += `Con mucha alegría les escribo para responder a su invitación.\n\n`;
+            waText += `*Invitado:* ${name}\n`;
+            waText += `*Asistencia:* ${estadoAsistencia}\n`;
+
+            if (message) {
+                waText += `\n*Mensaje:* "${message}"`;
+            }
+
+            const phoneNumber = "522411576300";
+            const waUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(waText)}`;
+
+            window.open(waUrl, '_blank');
+            rsvpModal.classList.add('hidden');
+        };
+
         $('openInvite').onclick = () => {
-            $('entry').classList.add('hidden');
-            $('entry').inert = true;
+            $('entry').classList.add('hidden'); $('entry').inert = true;
             wantsMusic = true;
             syncMusic();
             $('musicButton').focus();
@@ -1311,9 +1676,59 @@
         }
 
         $('prev').onclick = () => move(-1);
-        $('next').onclick = () => move(1);
-        $('track').addEventListener('scroll', updateGallery);
+        $('next').onclick = () => move(1); $('track').addEventListener('scroll', updateGallery);
         window.addEventListener('resize', updateGallery);
+
+        // --- LÓGICA DE CARRUSEL DE FRASES ---
+        const phraseSlides = document.querySelectorAll('.phrase-slide');
+        const phraseDotsContainer = $('phraseDots');
+        let currentPhraseIndex = 0;
+        let phraseInterval;
+
+        // Crear los puntos (dots)
+        phraseSlides.forEach((_, index) => {
+            const dot = document.createElement('button');
+            dot.className = `dot ${index === 0 ? 'active' : ''}`;
+            dot.setAttribute('aria-label', `Ver frase ${index + 1}`);
+            dot.onclick = () => goToPhrase(index);
+            phraseDotsContainer.appendChild(dot);
+        });
+        const dots = document.querySelectorAll('.dot');
+
+        function updatePhraseCarousel() {
+            phraseSlides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentPhraseIndex);
+                dots[index].classList.toggle('active', index === currentPhraseIndex);
+            });
+        }
+
+        function nextPhrase() {
+            currentPhraseIndex = (currentPhraseIndex + 1) % phraseSlides.length;
+            updatePhraseCarousel();
+            resetPhraseInterval();
+        }
+
+        function prevPhrase() {
+            currentPhraseIndex = (currentPhraseIndex - 1 + phraseSlides.length) % phraseSlides.length;
+            updatePhraseCarousel();
+            resetPhraseInterval();
+        }
+
+        function goToPhrase(index) {
+            currentPhraseIndex = index;
+            updatePhraseCarousel();
+            resetPhraseInterval();
+        }
+
+        function resetPhraseInterval() {
+            clearInterval(phraseInterval);
+            phraseInterval = setInterval(nextPhrase, 7000); // Cambia cada 7 segundos automáticamente
+        }
+
+        $('nextPhrase').onclick = nextPhrase;
+        $('prevPhrase').onclick = prevPhrase;
+        resetPhraseInterval(); // Iniciar auto-play
+        // ------------------------------------
 
         render();
         setInterval(tick, 1000);
